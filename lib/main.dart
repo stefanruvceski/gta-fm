@@ -5,8 +5,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
-final mp3Url =
-    "http://docs.google.com/uc?export=open&id=1Bn_3HikUes4JD-Y1oH61zif3duQcPu6M";
+final gtaFmUrls =[
+    "http://docs.google.com/uc?export=open&id=1Bn_3HikUes4JD-Y1oH61zif3duQcPu6M",
+    "http://docs.google.com/uc?export=open&id=1iJlM-eqY0UzipbsVhxc0kPFaoqbv_Ud3",
+    "http://docs.google.com/uc?export=open&id=1rrBoRRklcKo3IEwLspF0I_x4c3IWL49S",
+    "http://docs.google.com/uc?export=open&id=17cntczpONIGX9yamzj2J1gapKwqURExL",
+    "http://docs.google.com/uc?export=open&id=11AXR4q1JNwy0_rxdTFFGu2DeI-Fd4Z73",
+    "http://docs.google.com/uc?export=open&id=14hDjUvbAUoLwIDmrcYPcK5rtvZxPGipt"
+];
+
 var dio = Dio();
 
 void main() => runApp(MyApp());
@@ -38,12 +45,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final Playlist playlist = Playlist(audios: [
     Audio.network(
-      mp3Url,
-      metas: Metas(title: 'hello world'),
+      gtaFmUrls[0],
+      metas: Metas(title: 'Flash FM'),
     ),
     Audio.network(
-      mp3Url,
-      metas: Metas(title: 'hello world 2'),
+      gtaFmUrls[1],
+      metas: Metas(title: 'Vice City FM'),
+    ),
+     Audio.network(
+      gtaFmUrls[2],
+      metas: Metas(title: 'Vice City FM'),
+    ),
+     Audio.network(
+      gtaFmUrls[3],
+      metas: Metas(title: 'Emotion 983 FM'),
+    ),
+     Audio.network(
+      gtaFmUrls[4],
+      metas: Metas(title: 'Fever 105 FM'),
+    ),
+     Audio.network(
+      gtaFmUrls[5],
+      metas: Metas(title: 'Flash FM'),
     ),
   ]);
 
@@ -70,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     await downloadFileTo(
         dio: dio,
-        url: mp3Url,
+        url: gtaFmUrls[0],
         savePath: downloadPath,
         progressFunction: (received, total) {
           if (total != -1) {
